@@ -1,4 +1,17 @@
 // ========================================
+// LOADING SCREEN
+// ========================================
+window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            setTimeout(() => loadingScreen.remove(), 500);
+        }, 500);
+    }
+});
+
+// ========================================
 // NAVIGATION MENU TOGGLE
 // ========================================
 const navToggle = document.getElementById('navToggle');
@@ -167,31 +180,61 @@ skillBars.forEach(bar => {
 });
 
 // ========================================
-// CONTACT FORM HANDLING
+// CONTACT FORM HANDLING WITH FORMSPREE
 // ========================================
 const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('form-status');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
         
-        // Show success message
-        showNotification('Thank you for your message! I will get back to you soon.', 'success');
+        // Disable button and show loading
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         
-        // Reset form
-        contactForm.reset();
-        
-        // In a real application, you would send this data to a server
-        console.log('Form submitted:', formData);
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Success
+                showFormStatus('Thank you! Your message has been sent successfully. I\'ll get back to you soon!', 'success');
+                contactForm.reset();
+            } else {
+                // Error from server
+                throw new Error('Server error');
+            }
+        } catch (error) {
+            // Network or other error
+            showFormStatus('Oops! There was a problem sending your message. Please try again or email me directly.', 'error');
+        } finally {
+            // Re-enable button
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+        }
     });
+}
+
+function showFormStatus(message, type) {
+    if (formStatus) {
+        formStatus.textContent = message;
+        formStatus.className = `form-status ${type} show`;
+        
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            formStatus.classList.remove('show');
+        }, 5000);
+    }
 }
 
 // ========================================
@@ -476,27 +519,45 @@ window.addEventListener('scroll', throttle(() => {
 // ACCESSIBILITY ENHANCEMENTS
 // ========================================
 
-// Add skip to content link
-const skipLink = document.createElement('a');
-skipLink.href = '#main-content';
-skipLink.className = 'skip-link';
-skipLink.textContent = 'Skip to main content';
-skipLink.style.cssText = `
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #6366f1;
-    color: white;
-    padding: 8px;
-    text-decoration: none;
-    z-index: 100000;
-`;
-skipLink.addEventListener('focus', () => {
-    skipLink.style.top = '0';
+// Trap focus in mobile menu when open
+document.addEventListener('keydown', (e) => {
+    if (navMenu && navMenu.classList.contains('active') && e.key === 'Escape') {
+        navMenu.classList.remove('active');
+        navToggle.focus();
+    }
 });
-skipLink.addEventListener('blur', () => {
-    skipLink.style.top = '-40px';
-});
-document.body.insertBefore(skipLink, document.body.firstChild);
+
+// ========================================
+// PERFORMANCE MONITORING
+// ========================================
+if ('performance' in window && 'PerformanceObserver' in window) {
+    // Monitor Largest Contentful Paint
+    try {
+        const lcpObserver = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            const lastEntry = entries[entries.length - 1];
+            console.log('LCP:', lastEntry.renderTime || lastEntry.loadTime);
+        });
+        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+    } catch (e) {
+        // Observer not supported
+    }
+}
+
+// ========================================
+// SERVICE WORKER REGISTRATION (PWA)
+// ========================================
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('SW registered:', registration);
+            })
+            .catch(error => {
+                console.log('SW registration failed:', error);
+            });
+    });
+}
 
 console.log('%c✅ Portfolio loaded successfully!', 'color: #14b8a6; font-size: 14px; font-weight: bold;');
+console.log('%c🚀 Performance optimized | SEO ready | Accessible', 'color: #6366f1; font-size: 12px;');

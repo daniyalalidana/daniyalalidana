@@ -3,16 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Daniyal Ali Dana - AI & Machine Learning Student Portfolio">
-    <title>Daniyal Ali Dana | AI & ML Portfolio</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Daniyal Ali Dana | AI & Machine Learning Student Portfolio</title>
+    <meta name="title" content="Daniyal Ali Dana | AI & ML Student Portfolio">
+    <meta name="description" content="3rd semester AI student specializing in Machine Learning, Data Science, and Python. IBM certified with practical experience in supervised learning algorithms and freelance projects.">
+    <meta name="keywords" content="Daniyal Ali Dana, AI Student, Machine Learning, Data Science, Python, IBM Certified, Artificial Intelligence, Supervised Learning, Upwork Freelancer">
+    <meta name="author" content="Daniyal Ali Dana">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://daniyalalidana.github.io/">
+    <meta property="og:title" content="Daniyal Ali Dana | AI & Machine Learning Student">
+    <meta property="og:description" content="3rd semester AI student specializing in Machine Learning, Data Science, and Python. IBM certified with practical experience in supervised learning algorithms.">
+    <meta property="og:image" content="https://daniyalalidana.github.io/images/profile.jpg">
+    <meta property="og:site_name" content="Daniyal Ali Dana Portfolio">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://daniyalalidana.github.io/">
+    <meta property="twitter:title" content="Daniyal Ali Dana | AI & Machine Learning Student">
+    <meta property="twitter:description" content="3rd semester AI student specializing in Machine Learning, Data Science, and Python. IBM certified with practical experience.">
+    <meta property="twitter:image" content="https://daniyalalidana.github.io/images/profile.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://daniyalalidana.github.io/">
+    
+    <!-- Performance Optimization: Preconnect to external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="portfolio-styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Daniyal Ali Dana",
+      "jobTitle": "Artificial Intelligence Student",
+      "description": "3rd semester AI student specializing in Machine Learning and Data Science",
+      "url": "https://daniyalalidana.github.io/",
+      "image": "https://daniyalalidana.github.io/images/profile.jpg",
+      "sameAs": [
+        "https://github.com/daniyalalidana",
+        "https://linkedin.com/in/daniyalalidana",
+        "https://www.upwork.com/freelancers/daniyalalidana"
+      ],
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "NUST University"
+      },
+      "knowsAbout": [
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Data Science",
+        "Python Programming",
+        "Supervised Learning",
+        "Data Analysis"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Artificial Intelligence Fundamentals",
+          "credentialCategory": "certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "IBM SkillsBuild"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Data Analysis Using Python",
+          "credentialCategory": "certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "IBM"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Machine Learning with Python - Level 1",
+          "credentialCategory": "certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "IBM"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">Daniyal Ali Dana</a>
+            <a href="#home" class="nav-logo" aria-label="Daniyal Ali Dana - Home">Daniyal Ali Dana</a>
             <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
@@ -30,7 +132,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" role="banner">
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
@@ -38,11 +140,11 @@
                 </h1>
                 <h2 class="hero-subtitle">Artificial Intelligence & Machine Learning Student</h2>
                 <p class="hero-description">
-                    3rd Semester AI Student | Machine Learning Enthusiast | IBM Certified | Freelance Data Scientist
+                    AI Student | Machine Learning Enthusiast | IBM Certified | Freelance Data Scientist
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#projects" class="btn btn-primary" aria-label="View my projects">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary" aria-label="Contact me">Contact Me</a>
                 </div>
                 <div class="social-links">
                     <a href="https://github.com/daniyalalidana" target="_blank" title="GitHub">
@@ -72,15 +174,17 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- About Section -->
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading" class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-main">
                     <div class="about-text-primary">
                         <p class="about-intro">
-                            I'm a passionate <span class="highlight-text">3rd Semester Artificial Intelligence student</span> with a strong foundation in Machine Learning and Data Science. My journey in AI has been marked by continuous learning, practical application, and a drive to solve real-world problems.
+                            I'm a passionate <span class="highlight-text">Artificial Intelligence student</span> with a strong foundation in Machine Learning and Data Science. My journey in AI has been marked by continuous learning, practical application, and a drive to solve real-world problems.
                         </p>
                     </div>
                     
@@ -594,50 +698,62 @@
                 </div>
 
                 <div class="contact-form-container">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required aria-required="true" placeholder="Your name">
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required aria-required="true" placeholder="your.email@example.com">
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required aria-required="true" placeholder="What is this about?">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Your message here..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">
+                        <!-- Honeypot for spam protection -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <button type="submit" class="btn btn-primary" aria-label="Send message">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
+                        
+                        <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <p>&copy; 2026 Daniyal Ali Dana. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="https://github.com/daniyalalidana" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/daniyalalidana" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.upwork.com/freelancers/daniyalalidana" target="_blank"><i class="fas fa-laptop-code"></i></a>
+                <div class="footer-social" aria-label="Social media links">
+                    <a href="https://github.com/daniyalalidana" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/daniyalalidana" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.upwork.com/freelancers/daniyalalidana" target="_blank" rel="noopener noreferrer" aria-label="Upwork Profile"><i class="fas fa-laptop-code"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="portfolio-script.js"></script>
+    <!-- Scripts - Deferred for better performance -->
+    <script src="portfolio-script.js" defer></script>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader"></div>
+    </div>
 </body>
 </html>
