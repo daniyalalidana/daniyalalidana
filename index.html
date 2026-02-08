@@ -3,1334 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniyal Ali Dana | Data Science & ML Student</title>
-    <meta name="description" content="Portfolio of Daniyal Ali Dana - Data Science and Machine Learning student, exploring AI projects, supervised learning, and data preprocessing.">
-    <meta name="keywords" content="Data Science, Machine Learning, AI, Python, Portfolio">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
-    <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-    }
-
-    :root {
-        --primary: #3b82f6;
-        --primary-dark: #2563eb;
-        --secondary: #64748b;
-        --accent: #8b5cf6;
-        --bg: #fafafa;
-        --text: #0f172a;
-    }
-
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
-
-    body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        line-height: 1.6;
-        color: var(--text);
-        background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #f8fafc 100%);
-        min-height: 100vh;
-        font-weight: 400;
-        letter-spacing: -0.3px;
-    }
-
-    /* Scroll Progress Bar */
-    #scroll-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        z-index: 1000;
-        transition: width 0.3s;
-    }
-
-    /* Navigation */
-    nav {
-        position: sticky;
-        top: 0;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid #e2e8f0;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        z-index: 999;
-    }
-
-    nav .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    nav h1 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text);
-    }
-
-    nav ul {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-    }
-
-    nav a {
-        color: var(--secondary);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.875rem;
-        transition: color 0.3s;
-    }
-
-    nav a:hover {
-        color: var(--primary);
-    }
-
-    /* Mobile Menu */
-    #mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: var(--text);
-        transition: all 0.3s ease;
-    }
-
-    #mobile-menu-btn:hover {
-        transform: scale(1.1);
-    }
-
-    nav ul.mobile-active {
-        display: flex !important;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid #e2e8f0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        animation: slideInDown 0.3s ease;
-        z-index: 998;
-    }
-
-    @keyframes slideInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
-
-    section {
-        padding: 5rem 0;
-    }
-
-    /* Hero Section */
-    #home {
-        min-height: 90vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .profile-pic {
-        width: 160px;
-        height: 160px;
-        margin: 0 auto 2rem;
-        position: relative;
-    }
-
-    .profile-pic-outer {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, #60a5fa, var(--accent));
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-    }
-
-    .profile-pic-inner {
-        position: absolute;
-        inset: 4px;
-        background: var(--text);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #475569;
-        font-size: 3rem;
-    }
-
-    .badge {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background: #dbeafe;
-        color: #1e40af;
-        border-radius: 2rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-
-    h1.hero-title {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        font-family: 'Poppins', sans-serif;
-        letter-spacing: -0.8px;
-    }
-
-    .hero-subtitle {
-        font-size: 1.5rem;
-        color: var(--secondary);
-        font-weight: 300;
-        margin-bottom: 2rem;
-    }
-
-    .hero-description {
-        font-size: 1.125rem;
-        color: var(--secondary);
-        max-width: 42rem;
-        margin: 0 auto 2rem;
-        line-height: 1.8;
-    }
-
-    .btn-group {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        padding: 0.75rem 2rem;
-        font-weight: 600;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        transition: all 0.3s;
-        display: inline-block;
-    }
-
-    .btn-primary {
-        background: var(--primary);
-        color: white;
-        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-    }
-
-    .btn-primary:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
-    }
-
-    .btn-secondary {
-        background: white;
-        color: var(--text);
-        border: 1px solid #e2e8f0;
-    }
-
-    .btn-secondary:hover {
-        background: #f8fafc;
-    }
-
-    /* Stats Section */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin-top: -2rem;
-    }
-
-    .stat-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 1rem;
-        text-align: center;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        border: 1px solid #e2e8f0;
-        transition: all 0.3s;
-    }
-
-    .stat-card:hover {
-        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        transform: translateY(-3px);
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-        color: var(--secondary);
-        font-size: 0.875rem;
-        font-weight: 600;
-    }
-
-    /* Section Titles */
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 1rem;
-        font-family: 'Poppins', sans-serif;
-        letter-spacing: -0.5px;
-    }
-
-    .section-subtitle {
-        text-align: center;
-        color: var(--secondary);
-        margin-bottom: 3rem;
-        max-width: 42rem;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Cards */
-    .card {
-        background: white;
-        border-radius: 1rem;
-        padding: 2rem;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        border: 1px solid #e2e8f0;
-        transition: all 0.3s;
-    }
-
-    .card:hover {
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        transform: translateY(-3px);
-    }
-
-    /* Grid Layouts */
-    .grid-2 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-
-    .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-    }
-
-    /* Project Cards */
-    .project-card {
-        background: white;
-        border-radius: 1rem;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        border: 1px solid #e2e8f0;
-        transition: all 0.3s;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .project-card:hover {
-        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-        transform: translateY(-5px);
-    }
-
-    .project-image {
-        height: 200px;
-        background: linear-gradient(135deg, #dbeafe, #e9d5ff, #fce7f3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #cbd5e1;
-        font-size: 3rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 0;
-    }
-
-    .project-image::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        animation: shimmer 3s infinite;
-    }
-
-    .project-content {
-        padding: 1.5rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .project-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1rem;
-    }
-
-    .project-type {
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 0.25rem 0.75rem;
-        background: #dbeafe;
-        color: #1e40af;
-        border-radius: 2rem;
-    }
-
-    .project-status {
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-    }
-
-    .status-completed {
-        background: #dcfce7;
-        color: #166534;
-    }
-
-    .status-progress {
-        background: #fef9c3;
-        color: #854d0e;
-    }
-
-    .project-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        font-family: 'Poppins', sans-serif;
-        letter-spacing: -0.3px;
-    }
-
-    .project-description {
-        color: var(--secondary);
-        font-size: 0.875rem;
-        margin-bottom: 1rem;
-        line-height: 1.6;
-        flex-grow: 1;
-    }
-
-    .tech-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .tech-tag {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.75rem;
-        background: #f1f5f9;
-        color: var(--secondary);
-        border-radius: 0.25rem;
-        font-weight: 500;
-    }
-
-    .project-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        padding: 0.75rem;
-        background: var(--text);
-        color: white;
-        text-decoration: none;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        font-size: 0.875rem;
-        transition: all 0.3s;
-    }
-
-    .project-link:hover {
-        background: #475569;
-    }
-
-    /* Skills Section */
-    .skill-category {
-        background: white;
-        border-radius: 1rem;
-        padding: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        border: 1px solid #e2e8f0;
-        transition: all 0.3s;
-    }
-
-    .skill-category:hover {
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        transform: translateY(-3px);
-    }
-
-    .skill-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .skill-icon {
-        width: 40px;
-        height: 40px;
-        background: #dbeafe;
-        color: var(--primary);
-        border-radius: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .skill-items {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .skill-item {
-        padding: 0.5rem 1rem;
-        background: linear-gradient(135deg, #eff6ff, #f3e8ff);
-        color: #1e40af;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        font-weight: 500;
-        border: 1px solid #bfdbfe;
-        transition: all 0.3s;
-    }
-
-    .skill-item:hover {
-        border-color: #60a5fa;
-    }
-
-    /* Achievement Banner */
-    .achievement-banner {
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: white;
-        padding: 5rem 2rem;
-        text-align: center;
-        border-radius: 1rem;
-    }
-
-    .achievement-icon {
-        width: 64px;
-        height: 64px;
-        background: rgba(255,255,255,0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 2rem;
-        font-size: 2rem;
-    }
-
-    .achievement-title {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
-
-    .achievement-description {
-        font-size: 1.25rem;
-        color: #bfdbfe;
-        max-width: 42rem;
-        margin: 0 auto 2rem;
-    }
-
-    .achievement-features {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .achievement-feature {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 600;
-    }
-
-    /* Contact Section */
-    .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-
-    .form-group {
-        margin-bottom: 1rem;
-    }
-
-    .form-group label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #e2e8f0;
-        border-radius: 0.5rem;
-        font-family: inherit;
-        font-size: 0.875rem;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
-
-    .form-group textarea {
-        resize: vertical;
-        min-height: 100px;
-    }
-
-    .contact-info-item {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .contact-icon {
-        width: 40px;
-        height: 40px;
-        background: white;
-        color: var(--primary);
-        border-radius: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-
-    .contact-link {
-        color: var(--primary);
-        text-decoration: none;
-    }
-
-    .contact-link:hover {
-        text-decoration: underline;
-    }
-
-    /* Footer */
-    footer {
-        background: var(--text);
-        color: #cbd5e1;
-        padding: 3rem 0 1rem;
-        margin-top: 5rem;
-    }
-
-    footer .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
-
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    footer h3 {
-        color: white;
-        margin-bottom: 1rem;
-    }
-
-    footer p, footer li {
-        font-size: 0.875rem;
-        line-height: 1.8;
-        color: #94a3b8;
-    }
-
-    footer ul {
-        list-style: none;
-    }
-
-    footer a {
-        color: #94a3b8;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    footer a:hover {
-        color: white;
-    }
-
-    .social-links {
-        display: flex;
-        gap: 0.75rem;
-        margin-top: 1rem;
-    }
-
-    .social-link {
-        width: 40px;
-        height: 40px;
-        background: #334155;
-        border-radius: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s;
-    }
-
-    .social-link:hover {
-        background: #475569;
-    }
-
-    .footer-bottom {
-        padding-top: 2rem;
-        border-top: 1px solid #334155;
-        text-align: center;
-    }
-
-    .footer-bottom p {
-        font-size: 0.875rem;
-    }
-
-    /* Scroll to Top Button */
-    #scroll-top {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 48px;
-        height: 48px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
-        transition: all 0.3s;
-        z-index: 998;
-    }
-
-    #scroll-top:hover {
-        background: var(--primary-dark);
-        transform: translateY(-3px);
-    }
-
-    /* Animations */
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes slideInLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes slideInRight {
-        from {
-            opacity: 0;
-            transform: translateX(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-15px);
-        }
-    }
-
-    @keyframes glow {
-        0%, 100% {
-            box-shadow: 0 0 5px rgba(59, 130, 246, 0.3), 0 5px 20px rgba(59, 130, 246, 0.2);
-        }
-        50% {
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-    }
-
-    @keyframes bounce {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    @keyframes shimmer {
-        0% {
-            background-position: -1000px 0;
-        }
-        100% {
-            background-position: 1000px 0;
-        }
-    }
-
-    @keyframes gradientShift {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-
-    @keyframes scaleIn {
-        from {
-            opacity: 0;
-            transform: scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    @keyframes rotateIn {
-        from {
-            opacity: 0;
-            transform: rotate(-10deg);
-        }
-        to {
-            opacity: 1;
-            transform: rotate(0deg);
-        }
-    }
-
-    /* Apply animations to elements */
-    .animate-fade-in {
-        animation: fadeInUp 0.6s ease-out;
-    }
-
-    .profile-pic {
-        animation: float 3s ease-in-out infinite;
-    }
-
-    .profile-pic-outer {
-        animation: glow 2s ease-in-out infinite;
-    }
-
-    .hero-title {
-        animation: fadeInUp 0.8s ease-out 0.1s both;
-    }
-
-    .hero-subtitle {
-        animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    .hero-description {
-        animation: fadeInUp 0.8s ease-out 0.3s both;
-    }
-
-    .btn-group {
-        animation: fadeInUp 0.8s ease-out 0.4s both;
-    }
-
-    .btn {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.2);
-        transition: left 0.5s ease;
-        z-index: -1;
-    }
-
-    .btn:hover::before {
-        left: 100%;
-    }
-
-    .stat-card {
-        animation: scaleIn 0.6s ease-out;
-    }
-
-    .stat-card:nth-child(1) { animation-delay: 0.1s; }
-    .stat-card:nth-child(2) { animation-delay: 0.2s; }
-    .stat-card:nth-child(3) { animation-delay: 0.3s; }
-    .stat-card:nth-child(4) { animation-delay: 0.4s; }
-
-    .card {
-        animation: fadeInUp 0.6s ease-out;
-        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    }
-
-    .card:hover {
-        animation: glow 2s ease-in-out infinite;
-    }
-
-    .project-card {
-        animation: fadeInUp 0.6s ease-out;
-    }
-
-    .project-card:nth-child(1) { animation-delay: 0.1s; }
-    .project-card:nth-child(2) { animation-delay: 0.2s; }
-    .project-card:nth-child(3) { animation-delay: 0.3s; }
-
-    .project-image {
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        height: 200px;
-        background: linear-gradient(135deg, #e0e7ff 0%, #e9d5ff 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        border-radius: 8px 8px 0 0;
-    }
-
-    .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px 8px 0 0;
-    }
-
-    .project-image::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        animation: shimmer 3s infinite;
-    }
-
-    .project-card:hover .project-image {
-        transform: scale(1.05);
-    }
-
-    .skill-category {
-        animation: fadeInUp 0.6s ease-out;
-    }
-
-    .skill-category:nth-child(1) { animation-delay: 0.1s; }
-    .skill-category:nth-child(2) { animation-delay: 0.2s; }
-    .skill-category:nth-child(3) { animation-delay: 0.3s; }
-    .skill-category:nth-child(4) { animation-delay: 0.4s; }
-
-    .skill-item {
-        animation: fadeInUp 0.5s ease-out;
-        transition: all 0.3s ease;
-    }
-
-    .skill-item:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
-        background: linear-gradient(135deg, #bfdbfe, #c7d2fe);
-    }
-
-    .achievement-banner {
-        animation: fadeInUp 0.8s ease-out;
-        background: linear-gradient(-45deg, var(--primary), var(--accent), #60a5fa, var(--accent));
-        background-size: 400% 400%;
-        animation: fadeInUp 0.8s ease-out, gradientShift 8s ease infinite;
-    }
-
-    .achievement-icon {
-        animation: bounce 2s ease-in-out infinite;
-    }
-
-    .achievement-feature {
-        animation: fadeInUp 0.6s ease-out;
-        transition: all 0.3s ease;
-    }
-
-    .achievement-feature:nth-child(1) { animation-delay: 0.1s; }
-    .achievement-feature:nth-child(2) { animation-delay: 0.2s; }
-    .achievement-feature:nth-child(3) { animation-delay: 0.3s; }
-
-    .achievement-feature:hover {
-        transform: translateX(5px);
-    }
-
-    .contact-info-item {
-        animation: slideInLeft 0.6s ease-out;
-        transition: all 0.3s ease;
-    }
-
-    .contact-info-item:hover {
-        transform: translateX(10px);
-    }
-
-    .contact-info-item:nth-child(1) { animation-delay: 0.1s; }
-    .contact-info-item:nth-child(2) { animation-delay: 0.2s; }
-    .contact-info-item:nth-child(3) { animation-delay: 0.3s; }
-
-    .contact-icon {
-        animation: rotateIn 0.6s ease-out;
-        transition: all 0.3s ease;
-    }
-
-    .contact-info-item:hover .contact-icon {
-        transform: rotate(10deg) scale(1.1);
-    }
-
-    #scroll-top {
-        animation: slideInRight 0.3s ease-out;
-        transition: all 0.3s ease;
-    }
-
-    #scroll-top:hover {
-        transform: translateY(-3px) scale(1.1);
-        animation: glow 1.5s ease-in-out infinite;
-    }
-
-    section {
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    section:nth-of-type(1) { animation-delay: 0s; }
-    section:nth-of-type(2) { animation-delay: 0.1s; }
-    section:nth-of-type(3) { animation-delay: 0.2s; }
-    section:nth-of-type(4) { animation-delay: 0.3s; }
-    section:nth-of-type(5) { animation-delay: 0.4s; }
-    section:nth-of-type(6) { animation-delay: 0.5s; }
-    section:nth-of-type(7) { animation-delay: 0.6s; }
-
-    /* Loading animation for form */
-    .form-group input:focus,
-    .form-group textarea:focus {
-        animation: pulse 1s ease-in-out;
-    }
-
-    /* Text pulse animation */
-    .section-title {
-        animation: fadeInUp 0.8s ease-out;
-        background: linear-gradient(135deg, var(--text), var(--primary), var(--accent), var(--text));
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    /* Scroll reveal animation */
-    @media (prefers-reduced-motion: no-preference) {
-        html {
-            scroll-behavior: smooth;
-        }
-    }
-
-    /* Hover lift effect for all cards */
-    .card, .stat-card, .project-card, .skill-category {
-        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .card:hover, .stat-card:hover, .project-card:hover, .skill-category:hover {
-        transform: translateY(-8px);
-    }
-
-    /* Badge animations */
-    .badge {
-        animation: slideInRight 0.6s ease-out;
-    }
-
-    /* Tech tags hover */
-    .tech-tag {
-        transition: all 0.3s ease;
-        position: relative;
-    }
-
-    .tech-tag:hover {
-        background: var(--primary);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-    }
-
-    /* Project type badge */
-    .project-type {
-        animation: slideInRight 0.6s ease-out;
-    }
-
-    /* Footer animation */
-    footer {
-        animation: slideInLeft 0.8s ease-out;
-    }
-
-    /* Links hover glow */
-    a {
-        transition: all 0.3s ease;
-    }
-
-    .contact-link {
-        position: relative;
-        text-decoration: none;
-    }
-
-    .contact-link::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        bottom: -5px;
-        left: 0;
-        background: var(--primary);
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.3s ease;
-    }
-
-    .contact-link:hover::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
-
-    /* Responsive animations */
-    @media (max-width: 768px) {
-        .profile-pic {
-            animation: float 2.5s ease-in-out infinite;
-        }
-
-        .hero-title {
-            animation: fadeInUp 0.6s ease-out 0.1s both;
-        }
-
-        .stat-card {
-            animation: scaleIn 0.5s ease-out;
-        }
-    }
-    </style>
-    </style>
+    <meta name="description" content="Daniyal Ali Dana - AI & Machine Learning Student Portfolio">
+    <title>Daniyal Ali Dana | AI & ML Portfolio</title>
+    <link rel="stylesheet" href="portfolio-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress"></div>
-
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <h1>Daniyal Ali Dana</h1>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Daniyal Ali Dana</a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button id="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home">
-        <div class="container animate-fade-in">
-            <div class="profile-pic">
-                <div class="profile-pic-outer"></div>
-                <div class="profile-pic-inner" style="background: transparent;">
-                    <img src="profile.jpg" alt="Daniyal Ali Dana" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onError="this.style.display='none';">
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Daniyal Ali Dana</span>
+                </h1>
+                <h2 class="hero-subtitle">Artificial Intelligence & Machine Learning Student</h2>
+                <p class="hero-description">
+                    3rd Semester AI Student | Machine Learning Enthusiast | IBM Certified | Freelance Data Scientist
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/daniyalalidana" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.upwork.com/freelancers/~YOUR_UPWORK_PROFILE" target="_blank" title="Upwork">
+                        <i class="fas fa-laptop-code"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/daniyalalidana" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:your.email@example.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
-            <div class="badge">Data Science & Machine Learning Student</div>
-            <h1 class="hero-title">Daniyal Ali Dana</h1>
-            <p class="hero-subtitle">Learning, Building, and Exploring AI Projects</p>
-            <p class="hero-description">
-                I'm a student passionate about data science and machine learning, currently exploring supervised learning, 
-                data preprocessing, and building practical AI projects. I believe in learning through hands-on experience.
-            </p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section style="padding: 3rem 0;">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" style="color: var(--primary);">3+</div>
-                    <div class="stat-label">Projects</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" style="color: #10b981;">2</div>
-                    <div class="stat-label">Certifications</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" style="color: var(--accent);">10+</div>
-                    <div class="stat-label">Skills</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" style="color: #f97316;">1</div>
-                    <div class="stat-label">Client Project</div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <a href="#about">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
     </section>
 
-    <!-- About Me Section -->
-    <section id="about">
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="card" style="max-width: 56rem; margin: 0 auto;">
-                <p style="margin-bottom: 1.5rem;">
-                    I'm currently pursuing my journey in <strong>Data Science and Machine Learning</strong>, with a genuine passion for 
-                    understanding how AI systems work and how data can be transformed into actionable insights.
-                </p>
-                <p style="margin-bottom: 1.5rem;">
-                    My learning path includes completing the <strong>IBM AI Fundamentals course</strong>, which gave me a solid foundation 
-                    in AI concepts. Now, I'm diving deeper into <strong>supervised learning</strong>, experimenting with various ML algorithms, 
-                    and learning the crucial aspects of data preprocessing and feature engineering.
-                </p>
-                <p style="margin-bottom: 1.5rem;">
-                    I approach AI as a <strong>learning student</strong> — I don't claim to be an expert, but I'm committed to continuous 
-                    improvement, hands-on experimentation, and building real projects that solve actual problems. Each project teaches me 
-                    something new, and I document my progress along the way.
-                </p>
-                <p>
-                    Beyond coursework, I've worked on practical projects including data collection for AI systems and implementing 
-                    machine learning models from scratch. My goal is to bridge theory with practice and eventually contribute to 
-                    meaningful AI applications.
-                </p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        I'm a passionate <strong>3rd semester Artificial Intelligence student</strong> with a strong foundation in Machine Learning and Data Science. My journey in AI has been marked by continuous learning, practical application, and a drive to solve real-world problems.
+                    </p>
+                    <p>
+                        I've completed comprehensive training in <strong>Machine Learning Supervised Learning</strong>, mastering all major algorithms including Linear Regression, Logistic Regression, Decision Trees, Random Forests, SVM, and Neural Networks. My expertise is validated by <strong>four IBM digital certificates</strong> covering AI Fundamentals, Data Analysis with Python, Data Fundamentals, and Machine Learning with Python.
+                    </p>
+                    <p>
+                        Beyond academics, I've gained practical experience through <strong>freelancing on Upwork</strong>, where I've successfully completed projects in data collection for AI models. I actively develop and share ML projects on <strong>GitHub</strong>, contributing to the open-source community while building a portfolio of real-world applications.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">IBM Certificates</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1+</div>
+                            <div class="stat-label">Upwork Projects</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">ML Algorithms</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Month Intensive Training</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Education & Certifications -->
-    <section id="education" style="background: rgba(255,255,255,0.5);">
+    <!-- Education & Certifications Section -->
+    <section id="education" class="education">
         <div class="container">
             <h2 class="section-title">Education & Certifications</h2>
-            <p class="section-subtitle">Academic background and professional certifications</p>
             
-            <div class="grid-2">
-                <div>
-                    <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
-                        <span style="color: var(--primary);">🎓</span> Education
-                    </h3>
-                    <div class="card">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <h4 style="font-size: 1.125rem; font-weight: 700;">Bachelor's in Computer Science</h4>
-                            <span class="badge" style="background: #dcfce7; color: #166534;">2023 - Present</span>
-                        </div>
-                        <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">NUML Islamabad</p>
-                        <p style="color: var(--secondary); font-size: 0.875rem;">Focus: Data Science & Machine Learning</p>
-                    </div>
+            <!-- Education -->
+            <div class="education-item featured">
+                <div class="education-icon">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
-
-                <div>
-                    <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
-                        <span style="color: var(--primary);">🏆</span> Certifications
-                    </h3>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="card">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <h4 style="font-size: 1.125rem; font-weight: 700;">IBM AI Fundamentals</h4>
-                                <span style="font-size: 0.75rem; color: var(--secondary);">2025</span>
-                            </div>
-                            <p style="color: var(--primary); font-weight: 600; font-size: 0.875rem; margin-bottom: 0.75rem;">IBM</p>
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                <span class="tech-tag">AI Concepts</span>
-                                <span class="tech-tag">ML Basics</span>
-                                <span class="tech-tag">Neural Networks</span>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <h4 style="font-size: 1.125rem; font-weight: 700;">Python for Data Science</h4>
-                                <span style="font-size: 0.75rem; color: var(--secondary);">2024</span>
-                            </div>
-                            <p style="color: var(--primary); font-weight: 600; font-size: 0.875rem; margin-bottom: 0.75rem;">Self-Study</p>
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Pandas</span>
-                                <span class="tech-tag">NumPy</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="education-content">
+                    <h3>Bachelor's in Artificial Intelligence</h3>
+                    <p class="education-status">Currently in 3rd Semester</p>
+                    <p class="education-description">
+                        Pursuing comprehensive education in AI, Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision.
+                    </p>
                 </div>
             </div>
 
-            <!-- Currently Learning -->
-            <div class="card" style="margin-top: 3rem; background: linear-gradient(135deg, #eff6ff, #f3e8ff); border: 1px solid #bfdbfe;">
-                <div style="display: flex; gap: 1rem; align-items: start;">
-                    <div style="width: 48px; height: 48px; background: var(--primary); color: white; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                        📚
+            <!-- Special Program -->
+            <div class="education-item featured">
+                <div class="education-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="education-content">
+                    <h3>High Impact Skills Development Program for GB Youth</h3>
+                    <p class="education-institution">NUST University | IT Department of Gilgit Baltistan</p>
+                    <p class="education-duration">6-Month Intensive Course</p>
+                    <p class="education-description">
+                        Completed comprehensive training in Data Science and Artificial Intelligence, covering data analysis, machine learning, and AI applications. Gained hands-on experience with Python ML tools through practical projects and real-world applications.
+                    </p>
+                </div>
+            </div>
+
+            <!-- IBM Certifications -->
+            <h3 class="subsection-title">IBM Digital Certificates</h3>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-certificate"></i>
                     </div>
-                    <div style="flex-grow: 1;">
-                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Currently Learning</h3>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.75rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite;"></div>
-                                <span style="font-weight: 500;">Advanced Supervised Learning Algorithms</span>
+                    <h4>Artificial Intelligence Fundamentals</h4>
+                    <p class="cert-issuer">IBM SkillsBuild</p>
+                    <p class="cert-date">Issued: December 4, 2025</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">AI Concepts</span>
+                        <span class="skill-tag">ML Basics</span>
+                        <span class="skill-tag">Neural Networks</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Data Analysis Using Python</h4>
+                    <p class="cert-issuer">IBM</p>
+                    <p class="cert-date">Issued: February 7, 2026</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Data Fundamentals</h4>
+                    <p class="cert-issuer">IBM SkillsBuild</p>
+                    <p class="cert-date">Issued: January 31, 2026</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">Data Types</span>
+                        <span class="skill-tag">Databases</span>
+                        <span class="skill-tag">ETL</span>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Machine Learning with Python - Level 1</h4>
+                    <p class="cert-issuer">IBM</p>
+                    <p class="cert-date">Issued: January 15, 2026</p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Regression</span>
+                        <span class="skill-tag">Classification</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <!-- Machine Learning -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>Machine Learning</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span>Supervised Learning</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite;"></div>
-                                <span style="font-weight: 500;">Feature Engineering Techniques</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Linear Regression</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite;"></div>
-                                <span style="font-weight: 500;">Model Evaluation & Validation</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Logistic Regression</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite;"></div>
-                                <span style="font-weight: 500;">Data Visualization with Matplotlib</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Decision Trees</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Random Forests</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>SVM</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Neural Networks</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming & Tools -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming & Tools</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span>Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Scikit-learn</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Pandas</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>NumPy</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Matplotlib</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Git & GitHub</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Science -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Data Science</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span>Data Analysis</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Data Visualization</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Data Preprocessing</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Feature Engineering</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Statistical Analysis</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & Other -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI & Other Skills</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span>Model Training</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Model Evaluation</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Data Collection</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Problem Solving</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
                             </div>
                         </div>
                     </div>
@@ -1340,390 +390,203 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Portfolio</h2>
-            <p class="section-subtitle">A collection of projects showcasing my learning journey in data science and machine learning</p>
+            <h2 class="section-title">Projects & Experience</h2>
             
-            <div class="grid-3">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project1.jpg" alt="AI Data Collection Project" onerror="this.style.display='none'; this.parentElement.innerHTML += '📊';">
+            <div class="projects-grid">
+                <!-- Freelance Project -->
+                <div class="project-card featured">
+                    <div class="project-icon">
+                        <i class="fas fa-briefcase"></i>
                     </div>
                     <div class="project-content">
-                        <div class="project-header">
-                            <span class="project-type">Client Project</span>
-                            <div style="display: flex; gap: 0.5rem; align-items: center;">
-                                <span style="font-size: 0.75rem; font-weight: 700; color: #10b981;">$40</span>
-                                <span class="project-status status-completed">Completed</span>
-                            </div>
-                        </div>
-                        <h3 class="project-title">AI Data Collection Project</h3>
+                        <h3>Data Collection for AI Model</h3>
+                        <p class="project-type">Freelance Project - Upwork</p>
                         <p class="project-description">
-                            Successfully completed a data collection project for a US-based client, gathering and structuring datasets for AI training purposes. Delivered quality data meeting client specifications.
+                            Successfully completed a professional data collection project for training an AI model. Demonstrated expertise in data gathering, cleaning, and preparation for machine learning applications.
                         </p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Web Scraping</span>
-                            <span class="tech-tag">Data Formatting</span>
-                            <span class="tech-tag">Quality Assurance</span>
+                        <div class="project-tags">
+                            <span class="tag">Data Collection</span>
+                            <span class="tag">Data Cleaning</span>
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <div class="project-status">
+                            <i class="fas fa-check-circle"></i> Completed
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Projects Placeholder -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Machine Learning Projects</h3>
+                        <p class="project-type">Open Source - GitHub</p>
+                        <p class="project-description">
+                            Collection of machine learning projects showcasing implementation of various supervised learning algorithms including regression, classification, and ensemble methods.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">ML Algorithms</span>
+                            <span class="tag">Data Science</span>
                         </div>
                         <a href="https://github.com/daniyalalidana" target="_blank" class="project-link">
-                            <span>⚡</span> View on GitHub
+                            View on GitHub <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Supervised Learning Projects -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="project2.jpg" alt="Supervised Learning Practice" onerror="this.style.display='none'; this.parentElement.innerHTML += '🤖';">
+                    <div class="project-icon">
+                        <i class="fas fa-project-diagram"></i>
                     </div>
                     <div class="project-content">
-                        <div class="project-header">
-                            <span class="project-type">Learning Project</span>
-                            <span class="project-status status-progress">In Progress</span>
-                        </div>
-                        <h3 class="project-title">Supervised Learning Practice</h3>
+                        <h3>Supervised Learning Implementations</h3>
+                        <p class="project-type">Academic & Personal Projects</p>
                         <p class="project-description">
-                            Hands-on implementation of supervised learning algorithms including linear regression, decision trees, and classification models. Focus on understanding core concepts and model evaluation.
+                            Comprehensive implementations of all major supervised learning algorithms including Linear Regression, Logistic Regression, Decision Trees, Random Forests, SVM, and Neural Networks.
                         </p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">NumPy</span>
-                            <span class="tech-tag">Model Training</span>
+                        <div class="project-tags">
+                            <span class="tag">Linear Regression</span>
+                            <span class="tag">Classification</span>
+                            <span class="tag">Decision Trees</span>
+                            <span class="tag">Neural Networks</span>
                         </div>
-                        <a href="https://github.com/daniyalalidana" target="_blank" class="project-link">
-                            <span>⚡</span> View on GitHub
-                        </a>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Data Analysis Project -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="project3.jpg" alt="Data Preprocessing Pipeline" onerror="this.style.display='none'; this.parentElement.innerHTML += '🔧';">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-bar"></i>
                     </div>
                     <div class="project-content">
-                        <div class="project-header">
-                            <span class="project-type">Practice Project</span>
-                            <span class="project-status status-completed">Completed</span>
-                        </div>
-                        <h3 class="project-title">Data Preprocessing Pipeline</h3>
+                        <h3>Data Analysis with Python</h3>
+                        <p class="project-type">Course Project - IBM Certification</p>
                         <p class="project-description">
-                            Built a data preprocessing pipeline for cleaning raw datasets, handling missing values, feature scaling, and encoding categorical variables to prepare data for ML models.
+                            Comprehensive data analysis projects using Pandas, NumPy, and visualization libraries. Applied statistical methods and created insightful visualizations for data-driven decision making.
                         </p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">NumPy</span>
-                            <span class="tech-tag">Data Cleaning</span>
-                            <span class="tech-tag">Feature Engineering</span>
+                        <div class="project-tags">
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">Matplotlib</span>
+                            <span class="tag">Data Viz</span>
                         </div>
-                        <a href="https://github.com/daniyalalidana" target="_blank" class="project-link">
-                            <span>⚡</span> View on GitHub
-                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <p class="section-subtitle">Technical skills I'm developing and applying in my projects</p>
-            
-            <div class="grid-2">
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">💻</div>
-                        <h3 style="font-size: 1.125rem; font-weight: 700;">Programming</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">Basic JavaScript</span>
-                        <span class="skill-item">SQL</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">📊</div>
-                        <h3 style="font-size: 1.125rem; font-weight: 700;">Data Science</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-item">Pandas</span>
-                        <span class="skill-item">NumPy</span>
-                        <span class="skill-item">Data Preprocessing</span>
-                        <span class="skill-item">Data Cleaning</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">🧠</div>
-                        <h3 style="font-size: 1.125rem; font-weight: 700;">Machine Learning</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-item">Supervised Learning</span>
-                        <span class="skill-item">Model Training</span>
-                        <span class="skill-item">Scikit-learn</span>
-                        <span class="skill-item">Basic ML Algorithms</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">🛠️</div>
-                        <h3 style="font-size: 1.125rem; font-weight: 700;">Tools & Platforms</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-item">Jupyter Notebook</span>
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">Google Colab</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievement Banner -->
-    <section>
-        <div class="container">
-            <div class="achievement-banner">
-                <div class="achievement-icon">✨</div>
-                <h2 class="achievement-title">Building Real Solutions, One Project at a Time</h2>
-                <p class="achievement-description">
-                    From completing client projects to mastering ML algorithms, I'm focused on practical learning 
-                    and delivering quality work. Every project is a step forward in my data science journey.
-                </p>
-                <div class="achievement-features">
-                    <div class="achievement-feature">
-                        <span>✓</span> Quality Focused
-                    </div>
-                    <div class="achievement-feature">
-                        <span>⏱️</span> Timely Delivery
-                    </div>
-                    <div class="achievement-feature">
-                        <span>⚡</span> Continuous Learning
-                    </div>
-                </div>
+            <div class="projects-cta">
+                <p>More projects coming soon! Currently working on exciting ML and AI applications.</p>
+                <a href="https://github.com/daniyalalidana" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View All Projects on GitHub
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-subtitle">Feel free to reach out for collaborations, questions, or opportunities</p>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-intro">
+                I'm always open to discussing new projects, opportunities, or collaborations in AI and Machine Learning.
+            </p>
             
-            <div class="contact-grid">
-                <!-- Contact Form -->
-                <div class="card">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">Send a Message</h3>
-                    <form id="contact-form" action="https://formspree.io/f/xyzwvqpn" method="POST">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name" placeholder="Your name" required>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" placeholder="your.email@example.com" required>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
                         </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="message" placeholder="Your message..." required></textarea>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">Send Message</button>
-                        <p id="form-status" style="margin-top: 1rem; text-align: center; font-size: 0.875rem;"></p>
-                    </form>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p><a href="https://github.com/daniyalalidana" target="_blank">github.com/daniyalalidana</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3>Upwork</h3>
+                            <p><a href="https://www.upwork.com/freelancers/~YOUR_UPWORK_PROFILE" target="_blank">View Profile</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p><a href="https://linkedin.com/in/daniyalalidana" target="_blank">linkedin.com/in/daniyalalidana</a></p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Contact Info -->
-                <div>
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">Contact Information</h3>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
                         
-                        <div class="contact-info-item">
-                            <div class="contact-icon">✉️</div>
-                            <div>
-                                <p style="font-weight: 600; margin-bottom: 0.25rem;">Email</p>
-                                <a href="mailto:daniyalalidana193@gmail.com" class="contact-link">daniyalalidana193@gmail.com</a>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
-
-                        <div class="contact-info-item">
-                            <div class="contact-icon">⚡</div>
-                            <div>
-                                <p style="font-weight: 600; margin-bottom: 0.25rem;">GitHub</p>
-                                <a href="https://github.com/daniyalalidana" target="_blank" class="contact-link">github.com/daniyalalidana</a>
-                            </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
                         </div>
-
-                        <div class="contact-info-item" style="margin-bottom: 0;">
-                            <div class="contact-icon">💼</div>
-                            <div>
-                                <p style="font-weight: 600; margin-bottom: 0.25rem;">LinkedIn</p>
-                                <a href="https://linkedin.com/in/daniyalalidana" target="_blank" class="contact-link">linkedin.com/in/daniyalalidana</a>
-                            </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                    </div>
-
-                    <div class="card" style="background: linear-gradient(135deg, #eff6ff, #f3e8ff); border: 1px solid #bfdbfe;">
-                        <p style="font-size: 0.875rem; line-height: 1.6;">
-                            <strong>Open to Opportunities:</strong> I'm actively seeking internships, collaborative projects, 
-                            and learning opportunities in data science and machine learning.
-                        </p>
-                    </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3>Daniyal Ali Dana</h3>
-                    <p>Data Science & Machine Learning student focused on building practical AI solutions and continuously expanding my technical expertise.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/daniyalalidana" target="_blank" class="social-link">⚡</a>
-                        <a href="https://linkedin.com/in/daniyalalidana" target="_blank" class="social-link">💼</a>
-                        <a href="mailto:daniyalalidana193@gmail.com" class="social-link">✉️</a>
-                    </div>
+            <div class="footer-content">
+                <p>&copy; 2026 Daniyal Ali Dana. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/daniyalalidana" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/daniyalalidana" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.upwork.com/freelancers/~YOUR_UPWORK_PROFILE" target="_blank"><i class="fas fa-laptop-code"></i></a>
                 </div>
-
-                <div>
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Me</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3>Built With</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem;">
-                        <span style="padding: 0.25rem 0.75rem; background: #334155; border-radius: 0.25rem;">HTML5</span>
-                        <span style="padding: 0.25rem 0.75rem; background: #334155; border-radius: 0.25rem;">CSS3</span>
-                        <span style="padding: 0.25rem 0.75rem; background: #334155; border-radius: 0.25rem;">JavaScript</span>
-                    </div>
-                    <p style="margin-top: 1rem; font-size: 0.75rem;">Designed and developed with attention to detail and user experience.</p>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>© 2026 Daniyal Ali Dana. All rights reserved.</p>
-                <p style="margin-top: 0.5rem; font-size: 0.75rem;">Learning and building in public • Open for opportunities</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scroll-top" aria-label="Scroll to top">↑</button>
-
-    <script>
-        // Scroll Progress Bar
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scroll-progress');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = progress + '%';
-        });
-
-        // Scroll to Top Button
-        const scrollTopBtn = document.getElementById('scroll-top');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.style.display = 'flex';
-            } else {
-                scrollTopBtn.style.display = 'none';
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Smooth Scroll for Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const navUl = document.querySelector('nav ul');
-        
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navUl.classList.toggle('mobile-active');
-                mobileMenuBtn.textContent = navUl.classList.contains('mobile-active') ? '\u2715' : '\u2630';
-            });
-
-            // Close menu when link clicked
-            navUl.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navUl.classList.remove('mobile-active');
-                    mobileMenuBtn.textContent = '\u2630';
-                });
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('nav')) {
-                    navUl.classList.remove('mobile-active');
-                    mobileMenuBtn.textContent = '\u2630';
-                }
-            });
-        }
-
-        // Contact Form Validation
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            const formStatus = document.getElementById('form-status');
-            const formData = new FormData(e.target);
-            const submitBtn = document.getElementById('submit-btn');
-            
-            // Validation
-            if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
-                e.preventDefault();
-                formStatus.textContent = 'Please fill in all fields';
-                formStatus.style.color = '#dc2626';
-                return;
-            }
-
-            const emailRegex = /\S+@\S+\.\S+/;
-            if (!emailRegex.test(formData.get('email'))) {
-                e.preventDefault();
-                formStatus.textContent = 'Please enter a valid email';
-                formStatus.style.color = '#dc2626';
-                return;
-            }
-
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            formStatus.textContent = 'Sending your message...';
-            formStatus.style.color = '#3b82f6';
-        });
-    </script>
-
+    <script src="portfolio-script.js"></script>
 </body>
 </html>
