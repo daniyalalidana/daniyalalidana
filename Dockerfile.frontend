@@ -1,0 +1,17 @@
+FROM node:18-alpine as builder
+
+WORKDIR /app
+
+RUN npm install -g http-server
+
+FROM alpine:latest
+
+WORKDIR /app
+
+COPY --from=builder /usr/local/bin/http-server /usr/local/bin/
+
+COPY . .
+
+EXPOSE 8080
+
+CMD ["http-server", "-p", "8080", "--cors"]
