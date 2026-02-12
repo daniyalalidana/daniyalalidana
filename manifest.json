@@ -1,32 +1,19 @@
 {
-  "name": "Daniyal Ali Dana - AI & ML Portfolio",
-  "short_name": "Daniyal Portfolio",
-  "description": "Daniyal Ali Dana's AI and Machine Learning Portfolio - 3rd semester AI student specializing in Machine Learning and Data Science",
+  "name": "Daniyal Ali Dana - Portfolio",
+  "short_name": "Portfolio",
+  "description": "AI/ML Developer Portfolio - Daniyal Ali Dana",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
   "theme_color": "#6366f1",
+  "background_color": "#ffffff",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/images/icon-192x192.png",
+      "src": "/images/profile.jpg",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/images/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "categories": ["portfolio", "technology", "education"],
-  "screenshots": [
-    {
-      "src": "/images/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png"
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }
