@@ -1,6 +1,6 @@
 /**
  * Professional Portfolio Script
- * Features: Theme toggle, navigation, form handling, animations
+ * Features: Theme toggle, navigation, form handling, animations, back-to-top
  */
 
 document.addEventListener('DOMContentLoaded', initPortfolio);
@@ -9,6 +9,7 @@ function initPortfolio() {
     initTheme();
     initNavigation();
     initFormHandling();
+    initBackToTop();
     setupAnimations();
 }
 
@@ -142,6 +143,29 @@ function showError(element, message = 'Something went wrong') {
     }, 5000);
 }
 
+// ===== BACK TO TOP BUTTON =====
+function initBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+    if (!backToTopBtn) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    
+    // Smooth scroll to top
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
 // ===== ANIMATIONS =====
 function setupAnimations() {
     // Observe elements for scroll animations
@@ -159,9 +183,9 @@ function setupAnimations() {
         });
     }, observerOptions);
     
-    // Observe all cards and list items
+    // Observe all cards and list items (including new sections)
     document.querySelectorAll(
-        '.project-card, .skill-card, .highlight-card, .about-text, .contact-method'
+        '.project-card, .skill-card, .highlight-card, .about-text, .contact-method, .testimonial-card, .timeline-item, .badge'
     ).forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
