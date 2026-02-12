@@ -110,6 +110,7 @@ if (copyEmailBtn) {
 // ========================================
 // PROJECT MODAL SYSTEM
 // ========================================
+document.addEventListener('DOMContentLoaded', () => {
 const projectCards = document.querySelectorAll('.project-card');
 const projectModal = document.getElementById('projectModal');
 const modalBackdrop = document.querySelector('.modal-backdrop');
@@ -228,6 +229,7 @@ document.addEventListener('keydown', (e) => {
         closeProjectModal();
     }
 });
+}); // End DOMContentLoaded
 
 // ========================================
 // TOAST NOTIFICATION
