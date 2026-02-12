@@ -111,124 +111,124 @@ if (copyEmailBtn) {
 // PROJECT MODAL SYSTEM
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-const projectCards = document.querySelectorAll('.project-card');
-const projectModal = document.getElementById('projectModal');
-const modalBackdrop = document.querySelector('.modal-backdrop');
-const modalClose = document.querySelector('.modal-close');
+    const projectCards = document.querySelectorAll('.project-card');
+    const projectModal = document.getElementById('projectModal');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+    const modalClose = document.querySelector('.modal-close');
 
-// Project data mapping
-const projectsData = {
-    'Data Collection for AI Model': {
-        type: 'Freelance Project - Upwork',
-        description: 'Successfully completed a professional data collection project for training an AI model. Demonstrated expertise in data gathering, cleaning, and preparation for machine learning applications. This project involved meticulous attention to detail in ensuring data quality and consistency for optimal model training.',
-        tags: ['Data Collection', 'Data Cleaning', 'AI/ML', 'Python'],
-        status: 'Completed',
-        icon: 'fa-briefcase',
-        links: [
-            { text: 'View on Upwork', url: 'https://www.upwork.com/freelancers/daniyalalidana', icon: 'fa-external-link-alt' }
-        ]
-    },
-    'Machine Learning Projects': {
-        type: 'Open Source - GitHub',
-        description: 'Collection of machine learning projects showcasing implementation of various supervised learning algorithms including regression, classification, and ensemble methods. Each project includes detailed documentation, code examples, and performance metrics.',
-        tags: ['Scikit-learn', 'Python', 'ML Algorithms', 'Data Science'],
-        icon: 'fa-github',
-        links: [
-            { text: 'View on GitHub', url: 'https://github.com/daniyalalidana', icon: 'fa-github', primary: true }
-        ]
-    },
-    'Supervised Learning Implementations': {
-        type: 'Academic & Personal Projects',
-        description: 'Comprehensive implementations of all major supervised learning algorithms including Linear Regression, Logistic Regression, Decision Trees, Random Forests, SVM, and Neural Networks. Each implementation includes theory explanations, code walkthroughs, and practical examples.',
-        tags: ['Linear Regression', 'Classification', 'Decision Trees', 'Neural Networks'],
-        icon: 'fa-project-diagram',
-        links: [
-            { text: 'GitHub Repository', url: 'https://github.com/daniyalalidana', icon: 'fa-github', primary: true }
-        ]
-    },
-    'Data Analysis with Python': {
-        type: 'Course Project - IBM Certification',
-        description: 'Comprehensive data analysis projects using Pandas, NumPy, and visualization libraries. Applied statistical methods and created insightful visualizations for data-driven decision making. This project demonstrates proficiency in exploratory data analysis and data storytelling.',
-        tags: ['Pandas', 'NumPy', 'Matplotlib', 'Data Viz'],
-        icon: 'fa-chart-bar',
-        links: [
-            { text: 'GitHub Repository', url: 'https://github.com/daniyalalidana', icon: 'fa-github', primary: true }
-        ]
+    // Project data mapping
+    const projectsData = {
+        'Data Collection for AI Model': {
+            type: 'Freelance Project - Upwork',
+            description: 'Successfully completed a professional data collection project for training an AI model. Demonstrated expertise in data gathering, cleaning, and preparation for machine learning applications. This project involved meticulous attention to detail in ensuring data quality and consistency for optimal model training.',
+            tags: ['Data Collection', 'Data Cleaning', 'AI/ML', 'Python'],
+            status: 'Completed',
+            icon: 'fa-briefcase',
+            links: [
+                { text: 'View on Upwork', url: 'https://www.upwork.com/freelancers/daniyalalidana', icon: 'fa-external-link-alt' }
+            ]
+        },
+        'Machine Learning Projects': {
+            type: 'Open Source - GitHub',
+            description: 'Collection of machine learning projects showcasing implementation of various supervised learning algorithms including regression, classification, and ensemble methods. Each project includes detailed documentation, code examples, and performance metrics.',
+            tags: ['Scikit-learn', 'Python', 'ML Algorithms', 'Data Science'],
+            icon: 'fa-github',
+            links: [
+                { text: 'View on GitHub', url: 'https://github.com/daniyalalidana', icon: 'fa-github', primary: true }
+            ]
+        },
+        'Supervised Learning Implementations': {
+            type: 'Academic & Personal Projects',
+            description: 'Comprehensive implementations of all major supervised learning algorithms including Linear Regression, Logistic Regression, Decision Trees, Random Forests, SVM, and Neural Networks. Each implementation includes theory explanations, code walkthroughs, and practical examples.',
+            tags: ['Linear Regression', 'Classification', 'Decision Trees', 'Neural Networks'],
+            icon: 'fa-project-diagram',
+            links: [
+                { text: 'GitHub Repository', url: 'https://github.com/daniyalalidana', icon: 'fa-github', primary: true }
+            ]
+        },
+        'Data Analysis with Python': {
+            type: 'Course Project - IBM Certification',
+            description: 'Comprehensive data analysis projects using Pandas, NumPy, and visualization libraries. Applied statistical methods and created insightful visualizations for data-driven decision making. This project demonstrates proficiency in exploratory data analysis and data storytelling.',
+            tags: ['Pandas', 'NumPy', 'Matplotlib', 'Data Viz'],
+            icon: 'fa-chart-bar',
+            links: [
+                { text: 'GitHub Repository', url: 'https://github.com/daniyalalidana', icon: 'fa-github', primary: true }
+            ]
+        }
+    };
+
+    function openProjectModal(projectTitle) {
+        const project = projectsData[projectTitle];
+        if (!project) return;
+        
+        // Update modal header
+        document.getElementById('modalTitle').textContent = projectTitle;
+        document.querySelector('.modal-type').textContent = project.type;
+        document.querySelector('.modal-icon i').className = `fas ${project.icon}`;
+        
+        // Update modal body
+        document.querySelector('.modal-description').textContent = project.description;
+        
+        // Update tags
+        const tagsContainer = document.querySelector('.modal-tags');
+        tagsContainer.innerHTML = project.tags
+            .map(tag => `<span class="tag">${tag}</span>`)
+            .join('');
+        
+        // Update status if exists
+        const statusContainer = document.querySelector('.modal-status');
+        if (project.status) {
+            statusContainer.innerHTML = `<i class="fas fa-check-circle"></i> ${project.status}`;
+            statusContainer.style.display = 'flex';
+        } else {
+            statusContainer.style.display = 'none';
+        }
+        
+        // Update links
+        const linksContainer = document.querySelector('.modal-links');
+        linksContainer.innerHTML = project.links
+            .map(link => `
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="modal-link ${link.primary ? '' : 'secondary'}">
+                    <i class="fas ${link.icon}"></i>
+                    ${link.text}
+                </a>
+            `)
+            .join('');
+        
+        // Show modal
+        projectModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-};
 
-function openProjectModal(projectTitle) {
-    const project = projectsData[projectTitle];
-    if (!project) return;
-    
-    // Update modal header
-    document.getElementById('modalTitle').textContent = projectTitle;
-    document.querySelector('.modal-type').textContent = project.type;
-    document.querySelector('.modal-icon i').className = `fas ${project.icon}`;
-    
-    // Update modal body
-    document.querySelector('.modal-description').textContent = project.description;
-    
-    // Update tags
-    const tagsContainer = document.querySelector('.modal-tags');
-    tagsContainer.innerHTML = project.tags
-        .map(tag => `<span class="tag">${tag}</span>`)
-        .join('');
-    
-    // Update status if exists
-    const statusContainer = document.querySelector('.modal-status');
-    if (project.status) {
-        statusContainer.innerHTML = `<i class="fas fa-check-circle"></i> ${project.status}`;
-        statusContainer.style.display = 'flex';
-    } else {
-        statusContainer.style.display = 'none';
+    function closeProjectModal() {
+        projectModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
     }
-    
-    // Update links
-    const linksContainer = document.querySelector('.modal-links');
-    linksContainer.innerHTML = project.links
-        .map(link => `
-            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="modal-link ${link.primary ? '' : 'secondary'}">
-                <i class="fas ${link.icon}"></i>
-                ${link.text}
-            </a>
-        `)
-        .join('');
-    
-    // Show modal
-    projectModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
 
-function closeProjectModal() {
-    projectModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-// Add click listeners to project cards
-projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const title = card.querySelector('h3').textContent;
-        openProjectModal(title);
+    // Add click listeners to project cards
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('h3').textContent;
+            openProjectModal(title);
+        });
     });
-});
 
-// Close modal on backdrop click
-if (modalBackdrop) {
-    modalBackdrop.addEventListener('click', closeProjectModal);
-}
-
-// Close modal on close button click
-if (modalClose) {
-    modalClose.addEventListener('click', closeProjectModal);
-}
-
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && projectModal.classList.contains('active')) {
-        closeProjectModal();
+    // Close modal on backdrop click
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', closeProjectModal);
     }
-});
+
+    // Close modal on close button click
+    if (modalClose) {
+        modalClose.addEventListener('click', closeProjectModal);
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && projectModal.classList.contains('active')) {
+            closeProjectModal();
+        }
+    });
 }); // End DOMContentLoaded
 
 // ========================================
