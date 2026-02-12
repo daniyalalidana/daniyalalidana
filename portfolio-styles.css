@@ -1072,6 +1072,225 @@ section {
     content: '\f00c';
 }
 
+/* Project Modal Styles */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.project-modal.active {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background: var(--bg-primary);
+    border-radius: var(--border-radius-lg);
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-secondary);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    border-bottom: 2px solid var(--bg-tertiary);
+    align-items: flex-start;
+}
+
+.modal-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    background: var(--gradient-1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.modal-title {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.modal-type {
+    color: var(--primary-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-body {
+    padding: var(--spacing-xl);
+}
+
+.modal-description {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.95rem;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.modal-tags .tag {
+    background: var(--bg-secondary);
+    color: var(--primary-light);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid var(--bg-tertiary);
+}
+
+.modal-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--success-color, #10b981);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+}
+
+.modal-status i {
+    font-size: 1.1rem;
+}
+
+.modal-links {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.modal-link {
+    flex: 1;
+    min-width: 150px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    background: var(--gradient-1);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.modal-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.modal-link.secondary {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.modal-link.secondary:hover {
+    background: var(--bg-secondary);
+}
+
+/* Scrollbar styling for modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
+
+/* Make project cards clickable */
+.project-card {
+    cursor: pointer;
+}
+
 .contact-form-container {
     background: var(--bg-primary);
     padding: var(--spacing-xl);
