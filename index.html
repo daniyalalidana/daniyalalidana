@@ -115,6 +115,17 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="#home" class="nav-logo" aria-label="Daniyal Ali Dana - Home">Daniyal Ali Dana</a>
+            
+            <!-- Theme & Download Controls -->
+            <div class="nav-controls">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="resume.pdf" class="nav-btn resume-btn" download aria-label="Download resume" title="Download My Resume">
+                    <i class="fas fa-download"></i> Resume
+                </a>
+            </div>
+            
             <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
@@ -662,7 +673,12 @@
                         </div>
                         <div>
                             <h3>Email</h3>
-                            <p><a href="mailto:daniyalalidana193@gmail.com">daniyalalidana@gmail.com</a></p>
+                            <div class="email-copy-container">
+                                <p><a href="mailto:daniyalalidana193@gmail.com" class="email-link">daniyalalidana@gmail.com</a></p>
+                                <button type="button" id="copyEmailBtn" class="copy-btn" title="Copy email to clipboard" aria-label="Copy email address to clipboard">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     

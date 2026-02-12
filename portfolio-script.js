@@ -12,6 +12,165 @@ window.addEventListener('load', () => {
 });
 
 // ========================================
+// THEME TOGGLE (Dark/Light Mode)
+// ========================================
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+
+// Initialize theme from localStorage or system preference
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(savedTheme);
+}
+
+function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
+}
+
+function updateThemeIcon(theme) {
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'light') {
+            icon.className = 'fas fa-sun';
+            themeToggle.setAttribute('title', 'Switch to dark mode');
+        } else {
+            icon.className = 'fas fa-moon';
+            themeToggle.setAttribute('title', 'Switch to light mode');
+        }
+    }
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    });
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    setTheme(e.matches ? 'dark' : 'light');
+});
+
+// Initialize on page load
+initTheme();
+
+// ========================================
+// EMAIL COPY TO CLIPBOARD
+// ========================================
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+const emailAddress = 'daniyalalidana193@gmail.com';
+
+if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        try {
+            // Try using modern Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(emailAddress);
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = emailAddress;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+            
+            // Visual feedback
+            const icon = copyEmailBtn.querySelector('i');
+            const originalClass = icon.className;
+            
+            copyEmailBtn.classList.add('copied');
+            icon.className = 'fas fa-check';
+            copyEmailBtn.disabled = true;
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                copyEmailBtn.classList.remove('copied');
+                icon.className = originalClass;
+                copyEmailBtn.disabled = false;
+            }, 2000);
+            
+            // Optional: Create toast notification
+            showToast('Email copied to clipboard!', 'success');
+        } catch (err) {
+            console.error('Failed to copy:', err);
+            showToast('Failed to copy email', 'error');
+        }
+    });
+}
+
+// ========================================
+// TOAST NOTIFICATION
+// ========================================
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    
+    // Add styles if not already present
+    if (!document.getElementById('toast-styles')) {
+        const style = document.createElement('style');
+        style.id = 'toast-styles';
+        style.innerHTML = `
+            .toast {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                z-index: 9999;
+                animation: slideIn 0.3s ease-out;
+            }
+            
+            .toast-success {
+                background: #10b981;
+                color: white;
+            }
+            
+            .toast-error {
+                background: #ef4444;
+                color: white;
+            }
+            
+            .toast-info {
+                background: #3b82f6;
+                color: white;
+            }
+            
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(toast);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.style.animation = 'slideIn 0.3s ease-out reverse';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+// ========================================
 // NAVIGATION MENU TOGGLE
 // ========================================
 const navToggle = document.getElementById('navToggle');
@@ -180,6 +339,50 @@ skillBars.forEach(bar => {
 });
 
 // ========================================
+// ADVANCED FORM VALIDATION
+// ========================================
+const formInputs = document.querySelectorAll('#contactForm input, #contactForm textarea');
+
+const validationRules = {
+    name: {
+        pattern: /^[a-zA-Z\s]{3,50}$/,
+        message: 'Name should be 3-50 characters, letters only'
+    },
+    email: {
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        message: 'Please enter a valid email address'
+    },
+    subject: {
+        pattern: /^.{5,100}$/,
+        message: 'Subject should be 5-100 characters'
+    },
+    message: {
+        pattern: /^.{10,1000}$/,
+        message: 'Message should be 10-1000 characters'
+    }
+};
+
+function validateField(field) {
+    const rules = validationRules[field.name];
+    if (!rules) return true;
+    
+    const isValid = rules.pattern.test(field.value.trim());
+    
+    // Add visual feedback
+    field.style.borderColor = isValid || !field.value ? 'inherit' : '#ef4444';
+    
+    return isValid;
+}
+
+// Add real-time validation
+formInputs.forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+        if (input.value) validateField(input);
+    });
+});
+
+// ========================================
 // CONTACT FORM HANDLING WITH FORMSPREE
 // ========================================
 const contactForm = document.getElementById('contactForm');
@@ -188,6 +391,18 @@ const formStatus = document.getElementById('form-status');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // Validate all fields
+        const allFieldsValid = Array.from(formInputs).every(field => {
+            return validationRules[field.name] 
+                ? validationRules[field.name].pattern.test(field.value.trim())
+                : true;
+        });
+        
+        if (!allFieldsValid) {
+            showFormStatus('Please fix the form errors before submitting', 'error');
+            return;
+        }
         
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.innerHTML;
@@ -210,6 +425,7 @@ if (contactForm) {
                 // Success
                 showFormStatus('Thank you! Your message has been sent successfully. I\'ll get back to you soon!', 'success');
                 contactForm.reset();
+                formInputs.forEach(input => input.style.borderColor = 'inherit');
             } else {
                 // Error from server
                 throw new Error('Server error');
