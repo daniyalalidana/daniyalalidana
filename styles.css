@@ -925,6 +925,157 @@ html[data-theme="dark"] .navbar {
     bottom: 2rem;
 }
 
+/* ============= SERVICES SECTION ============= */
+.services {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--color-bg), var(--color-bg-secondary));
+}
+
+.section-desc {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    background: var(--color-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--color-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+}
+
+.service-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.service-card h3 i {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.service-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-bg-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.service-details .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.service-details .time {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    text-align: right;
+}
+
+.service-includes {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.services-cta {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+}
+
+.services-cta p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.services-cta a {
+    color: var(--color-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.services-cta a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* ============= TESTIMONIAL STATS ============= */
+.testimonial-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.testimonial-stats .stat {
+    text-align: center;
+}
+
+.testimonial-stats .stat h3 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.testimonial-stats .stat p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
 /* ============= RESPONSIVE ============= */
 @media (max-width: 768px) {
     h2 {
@@ -1004,6 +1155,7 @@ html[data-theme="dark"] .navbar {
     .about,
     .skills,
     .projects,
+    .services,
     .contact {
         padding: 3rem 0;
     }
@@ -1053,6 +1205,20 @@ html[data-theme="dark"] .navbar {
     
     .footer-social {
         justify-content: center;
+    }
+    
+    /* Services mobile */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .service-details .time {
+        text-align: left;
     }
     
     /* Trust badges mobile */
